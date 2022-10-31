@@ -16,7 +16,7 @@ namespace DoctorOffice
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FRMReception());
+            Application.Run(new FRMHome());
         }
     }
 }

@@ -52,30 +52,37 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DoctorOfficeDataSet.cs">
+      <DependentUpon>DoctorOfficeDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DoctorOfficeDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DoctorOfficeDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Reception.cs">
+    <Compile Include="FRMTurns.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Reception.Designer.cs">
-      <DependentUpon>Reception.cs</DependentUpon>
+    <Compile Include="FRMTurns.Designer.cs">
+      <DependentUpon>FRMTurns.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FRMHome.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FRMHome.Designer.cs">
+      <DependentUpon>FRMHome.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FRMTurns.resx">
+      <DependentUpon>FRMTurns.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <EmbeddedResource Include="Reception.resx">
-      <DependentUpon>Reception.cs</DependentUpon>
+    <EmbeddedResource Include="FRMHome.resx">
+      <DependentUpon>FRMHome.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="DoctorOfficeDataSet.xsc">
       <DependentUpon>DoctorOfficeDataSet.xsd</DependentUpon>
@@ -101,6 +108,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

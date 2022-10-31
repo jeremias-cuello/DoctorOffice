@@ -459,10 +459,10 @@ namespace DoctorOffice {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public MedicsRow AddMedicsRow(int MedicKey, string Name, string Surname, int NumberTuition) {
+            public MedicsRow AddMedicsRow(string Name, string Surname, int NumberTuition) {
                 MedicsRow rowMedicsRow = ((MedicsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        MedicKey,
+                        null,
                         Name,
                         Surname,
                         NumberTuition};
@@ -514,10 +514,15 @@ namespace DoctorOffice {
                 base.Columns.Add(this.columnNumberTuition);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnMedicKey}, true));
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint2", new global::System.Data.DataColumn[] {
+                                this.columnNumberTuition}, false));
+                this.columnMedicKey.AutoIncrement = true;
+                this.columnMedicKey.AutoIncrementSeed = -1;
                 this.columnMedicKey.AllowDBNull = false;
                 this.columnMedicKey.Unique = true;
                 this.columnName.MaxLength = 80;
                 this.columnSurname.MaxLength = 80;
+                this.columnNumberTuition.Unique = true;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -663,6 +668,8 @@ namespace DoctorOffice {
             
             private global::System.Data.DataColumn columnEmail;
             
+            private global::System.Data.DataColumn columnClinicalHistory;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public PatientsDataTable() {
@@ -746,6 +753,14 @@ namespace DoctorOffice {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn ClinicalHistoryColumn {
+                get {
+                    return this.columnClinicalHistory;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -781,15 +796,16 @@ namespace DoctorOffice {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public PatientsRow AddPatientsRow(int PatientKey, string Name, string Surname, int Dni, int Phone, string Email) {
+            public PatientsRow AddPatientsRow(string Name, string Surname, int Dni, int Phone, string Email, string ClinicalHistory) {
                 PatientsRow rowPatientsRow = ((PatientsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        PatientKey,
+                        null,
                         Name,
                         Surname,
                         Dni,
                         Phone,
-                        Email};
+                        Email,
+                        ClinicalHistory};
                 rowPatientsRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowPatientsRow);
                 return rowPatientsRow;
@@ -825,6 +841,7 @@ namespace DoctorOffice {
                 this.columnDni = base.Columns["Dni"];
                 this.columnPhone = base.Columns["Phone"];
                 this.columnEmail = base.Columns["Email"];
+                this.columnClinicalHistory = base.Columns["ClinicalHistory"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -842,12 +859,25 @@ namespace DoctorOffice {
                 base.Columns.Add(this.columnPhone);
                 this.columnEmail = new global::System.Data.DataColumn("Email", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnEmail);
+                this.columnClinicalHistory = new global::System.Data.DataColumn("ClinicalHistory", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnClinicalHistory);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnPatientKey}, true));
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint2", new global::System.Data.DataColumn[] {
+                                this.columnDni}, false));
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint3", new global::System.Data.DataColumn[] {
+                                this.columnPhone}, false));
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint4", new global::System.Data.DataColumn[] {
+                                this.columnEmail}, false));
+                this.columnPatientKey.AutoIncrement = true;
+                this.columnPatientKey.AutoIncrementSeed = -1;
                 this.columnPatientKey.AllowDBNull = false;
                 this.columnPatientKey.Unique = true;
                 this.columnName.MaxLength = 80;
                 this.columnSurname.MaxLength = 80;
+                this.columnDni.Unique = true;
+                this.columnPhone.Unique = true;
+                this.columnEmail.Unique = true;
                 this.columnEmail.MaxLength = 80;
             }
             
@@ -1112,10 +1142,10 @@ namespace DoctorOffice {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public TurnsRow AddTurnsRow(int TurnKey, int Number, System.DateTime Date, System.TimeSpan Horary, int MedicKey, int PatientKey) {
+            public TurnsRow AddTurnsRow(int Number, System.DateTime Date, System.TimeSpan Horary, int MedicKey, int PatientKey) {
                 TurnsRow rowTurnsRow = ((TurnsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        TurnKey,
+                        null,
                         Number,
                         Date,
                         Horary,
@@ -1175,8 +1205,15 @@ namespace DoctorOffice {
                 base.Columns.Add(this.columnPatientKey);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnTurnKey}, true));
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint2", new global::System.Data.DataColumn[] {
+                                this.columnNumber}, false));
+                this.columnTurnKey.AutoIncrement = true;
+                this.columnTurnKey.AutoIncrementSeed = -1;
                 this.columnTurnKey.AllowDBNull = false;
                 this.columnTurnKey.Unique = true;
+                this.columnNumber.Unique = true;
+                this.columnMedicKey.AllowDBNull = false;
+                this.columnPatientKey.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1520,6 +1557,22 @@ namespace DoctorOffice {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string ClinicalHistory {
+                get {
+                    try {
+                        return ((string)(this[this.tablePatients.ClinicalHistoryColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'ClinicalHistory\' de la tabla \'Patients\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablePatients.ClinicalHistoryColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsNameNull() {
                 return this.IsNull(this.tablePatients.NameColumn);
             }
@@ -1576,6 +1629,18 @@ namespace DoctorOffice {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetEmailNull() {
                 this[this.tablePatients.EmailColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsClinicalHistoryNull() {
+                return this.IsNull(this.tablePatients.ClinicalHistoryColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetClinicalHistoryNull() {
+                this[this.tablePatients.ClinicalHistoryColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -1656,12 +1721,7 @@ namespace DoctorOffice {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public int MedicKey {
                 get {
-                    try {
-                        return ((int)(this[this.tableTurns.MedicKeyColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'MedicKey\' de la tabla \'Turns\' es DBNull.", e);
-                    }
+                    return ((int)(this[this.tableTurns.MedicKeyColumn]));
                 }
                 set {
                     this[this.tableTurns.MedicKeyColumn] = value;
@@ -1672,12 +1732,7 @@ namespace DoctorOffice {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public int PatientKey {
                 get {
-                    try {
-                        return ((int)(this[this.tableTurns.PatientKeyColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'PatientKey\' de la tabla \'Turns\' es DBNull.", e);
-                    }
+                    return ((int)(this[this.tableTurns.PatientKeyColumn]));
                 }
                 set {
                     this[this.tableTurns.PatientKeyColumn] = value;
@@ -1718,30 +1773,6 @@ namespace DoctorOffice {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetHoraryNull() {
                 this[this.tableTurns.HoraryColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsMedicKeyNull() {
-                return this.IsNull(this.tableTurns.MedicKeyColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetMedicKeyNull() {
-                this[this.tableTurns.MedicKeyColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsPatientKeyNull() {
-                return this.IsNull(this.tableTurns.PatientKeyColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetPatientKeyNull() {
-                this[this.tableTurns.PatientKeyColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -2373,6 +2404,7 @@ SELECT MedicKey, Name, Surname, NumberTuition FROM Medics WHERE (MedicKey = @Med
             tableMapping.ColumnMappings.Add("Dni", "Dni");
             tableMapping.ColumnMappings.Add("Phone", "Phone");
             tableMapping.ColumnMappings.Add("Email", "Email");
+            tableMapping.ColumnMappings.Add("ClinicalHistory", "ClinicalHistory");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
@@ -2964,7 +2996,7 @@ SELECT TurnKey, Number, Date, Horary, MedicKey, PatientKey FROM Turns WHERE (Tur
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_TurnKey, global::System.Nullable<int> Original_Number, global::System.Nullable<global::System.DateTime> Original_Date, global::System.Nullable<global::System.TimeSpan> Original_Horary, global::System.Nullable<int> Original_MedicKey, global::System.Nullable<int> Original_PatientKey) {
+        public virtual int Delete(int Original_TurnKey, global::System.Nullable<int> Original_Number, global::System.Nullable<global::System.DateTime> Original_Date, global::System.Nullable<global::System.TimeSpan> Original_Horary, int Original_MedicKey, int Original_PatientKey) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_TurnKey));
             if ((Original_Number.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(0));
@@ -2990,22 +3022,10 @@ SELECT TurnKey, Number, Date, Horary, MedicKey, PatientKey FROM Turns WHERE (Tur
                 this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
-            if ((Original_MedicKey.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[8].Value = ((int)(Original_MedicKey.Value));
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[8].Value = global::System.DBNull.Value;
-            }
-            if ((Original_PatientKey.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[9].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[10].Value = ((int)(Original_PatientKey.Value));
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[9].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[10].Value = global::System.DBNull.Value;
-            }
+            this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(0));
+            this.Adapter.DeleteCommand.Parameters[8].Value = ((int)(Original_MedicKey));
+            this.Adapter.DeleteCommand.Parameters[9].Value = ((object)(0));
+            this.Adapter.DeleteCommand.Parameters[10].Value = ((int)(Original_PatientKey));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -3026,7 +3046,7 @@ SELECT TurnKey, Number, Date, Horary, MedicKey, PatientKey FROM Turns WHERE (Tur
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int TurnKey, global::System.Nullable<int> Number, global::System.Nullable<global::System.DateTime> Date, global::System.Nullable<global::System.TimeSpan> Horary, global::System.Nullable<int> MedicKey, global::System.Nullable<int> PatientKey) {
+        public virtual int Insert(int TurnKey, global::System.Nullable<int> Number, global::System.Nullable<global::System.DateTime> Date, global::System.Nullable<global::System.TimeSpan> Horary, int MedicKey, int PatientKey) {
             this.Adapter.InsertCommand.Parameters[0].Value = ((int)(TurnKey));
             if ((Number.HasValue == true)) {
                 this.Adapter.InsertCommand.Parameters[1].Value = ((int)(Number.Value));
@@ -3046,18 +3066,8 @@ SELECT TurnKey, Number, Date, Horary, MedicKey, PatientKey FROM Turns WHERE (Tur
             else {
                 this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
-            if ((MedicKey.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[4].Value = ((int)(MedicKey.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
-            }
-            if ((PatientKey.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[5].Value = ((int)(PatientKey.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[5].Value = global::System.DBNull.Value;
-            }
+            this.Adapter.InsertCommand.Parameters[4].Value = ((int)(MedicKey));
+            this.Adapter.InsertCommand.Parameters[5].Value = ((int)(PatientKey));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -3078,7 +3088,7 @@ SELECT TurnKey, Number, Date, Horary, MedicKey, PatientKey FROM Turns WHERE (Tur
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int TurnKey, global::System.Nullable<int> Number, global::System.Nullable<global::System.DateTime> Date, global::System.Nullable<global::System.TimeSpan> Horary, global::System.Nullable<int> MedicKey, global::System.Nullable<int> PatientKey, int Original_TurnKey, global::System.Nullable<int> Original_Number, global::System.Nullable<global::System.DateTime> Original_Date, global::System.Nullable<global::System.TimeSpan> Original_Horary, global::System.Nullable<int> Original_MedicKey, global::System.Nullable<int> Original_PatientKey) {
+        public virtual int Update(int TurnKey, global::System.Nullable<int> Number, global::System.Nullable<global::System.DateTime> Date, global::System.Nullable<global::System.TimeSpan> Horary, int MedicKey, int PatientKey, int Original_TurnKey, global::System.Nullable<int> Original_Number, global::System.Nullable<global::System.DateTime> Original_Date, global::System.Nullable<global::System.TimeSpan> Original_Horary, int Original_MedicKey, int Original_PatientKey) {
             this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(TurnKey));
             if ((Number.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(Number.Value));
@@ -3098,18 +3108,8 @@ SELECT TurnKey, Number, Date, Horary, MedicKey, PatientKey FROM Turns WHERE (Tur
             else {
                 this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
-            if ((MedicKey.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(MedicKey.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
-            }
-            if ((PatientKey.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(PatientKey.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
-            }
+            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(MedicKey));
+            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(PatientKey));
             this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(Original_TurnKey));
             if ((Original_Number.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[7].Value = ((object)(0));
@@ -3135,22 +3135,10 @@ SELECT TurnKey, Number, Date, Horary, MedicKey, PatientKey FROM Turns WHERE (Tur
                 this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[12].Value = global::System.DBNull.Value;
             }
-            if ((Original_MedicKey.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[13].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[14].Value = ((int)(Original_MedicKey.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[13].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[14].Value = global::System.DBNull.Value;
-            }
-            if ((Original_PatientKey.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[15].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[16].Value = ((int)(Original_PatientKey.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[15].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[16].Value = global::System.DBNull.Value;
-            }
+            this.Adapter.UpdateCommand.Parameters[13].Value = ((object)(0));
+            this.Adapter.UpdateCommand.Parameters[14].Value = ((int)(Original_MedicKey));
+            this.Adapter.UpdateCommand.Parameters[15].Value = ((object)(0));
+            this.Adapter.UpdateCommand.Parameters[16].Value = ((int)(Original_PatientKey));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -3171,7 +3159,7 @@ SELECT TurnKey, Number, Date, Horary, MedicKey, PatientKey FROM Turns WHERE (Tur
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(global::System.Nullable<int> Number, global::System.Nullable<global::System.DateTime> Date, global::System.Nullable<global::System.TimeSpan> Horary, global::System.Nullable<int> MedicKey, global::System.Nullable<int> PatientKey, int Original_TurnKey, global::System.Nullable<int> Original_Number, global::System.Nullable<global::System.DateTime> Original_Date, global::System.Nullable<global::System.TimeSpan> Original_Horary, global::System.Nullable<int> Original_MedicKey, global::System.Nullable<int> Original_PatientKey) {
+        public virtual int Update(global::System.Nullable<int> Number, global::System.Nullable<global::System.DateTime> Date, global::System.Nullable<global::System.TimeSpan> Horary, int MedicKey, int PatientKey, int Original_TurnKey, global::System.Nullable<int> Original_Number, global::System.Nullable<global::System.DateTime> Original_Date, global::System.Nullable<global::System.TimeSpan> Original_Horary, int Original_MedicKey, int Original_PatientKey) {
             return this.Update(Original_TurnKey, Number, Date, Horary, MedicKey, PatientKey, Original_TurnKey, Original_Number, Original_Date, Original_Horary, Original_MedicKey, Original_PatientKey);
         }
     }

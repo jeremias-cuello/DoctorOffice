@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace DoctorOffice
 {
-    public partial class FRMReception : Form
+    public partial class FRMTurns : Form
     {
-        public FRMReception()
+        public FRMTurns()
         {
             InitializeComponent();
         }
