@@ -75,7 +75,7 @@ namespace DoctorOffice
         private void IBTReception_Click(object sender, EventArgs e)
         {
             ActiveButton(sender, ControlsColors.BTNActive);
-            // OpenChildForm(new FRMReception());
+            OpenChildForm(new FRMReception());
         }
 
         private void IBTTurns_Click(object sender, EventArgs e)
@@ -87,7 +87,7 @@ namespace DoctorOffice
         private void IBTMedics_Click(object sender, EventArgs e)
         {
             ActiveButton(sender, ControlsColors.BTNActive);
-            // OpenChildForm(new FRMReception());
+            OpenChildForm(new FRMMedics());
         }
 
         private void IPBIcon_Click(object sender, EventArgs e)
@@ -100,6 +100,7 @@ namespace DoctorOffice
             DisbaleButton();
             leftBorderBtn.Visible = false;
             IPBCurrentChild.IconChar = IconChar.Home;
+            LBLCurrentChild.Text = "Home";
         }
 
         private void OpenChildForm(Form childForm)
