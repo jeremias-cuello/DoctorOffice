@@ -33,5 +33,16 @@ namespace DoctorOffice.Properties {
                 return ((string)(this["DoctorOfficeConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-2J37NQO\\SQLEXPRESS;Initial Catalog=SoccerFields;Persist Secur" +
+            "ity Info=True;User ID=sa;Password=jerekpo289")]
+        public string SoccerFieldsConnectionString {
+            get {
+                return ((string)(this["SoccerFieldsConnectionString"]));
+            }
+        }
     }
 }

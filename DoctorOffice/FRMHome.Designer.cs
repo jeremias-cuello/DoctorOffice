@@ -53,10 +53,10 @@ namespace DoctorOffice
             // PNLMenu
             // 
             this.PNLMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(179)))), ((int)(((byte)(255)))));
-            this.PNLMenu.Controls.Add(this.IBTContact);
             this.PNLMenu.Controls.Add(this.IBTMedics);
-            this.PNLMenu.Controls.Add(this.IBTReception);
             this.PNLMenu.Controls.Add(this.IBTTurns);
+            this.PNLMenu.Controls.Add(this.IBTContact);
+            this.PNLMenu.Controls.Add(this.IBTReception);
             this.PNLMenu.Controls.Add(this.PNLIcon);
             this.PNLMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.PNLMenu.Location = new System.Drawing.Point(0, 0);
@@ -120,7 +120,7 @@ namespace DoctorOffice
             this.IBTReception.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.IBTReception.IconSize = 32;
             this.IBTReception.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.IBTReception.Location = new System.Drawing.Point(0, 200);
+            this.IBTReception.Location = new System.Drawing.Point(0, 140);
             this.IBTReception.Name = "IBTReception";
             this.IBTReception.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
             this.IBTReception.Size = new System.Drawing.Size(220, 60);
@@ -141,7 +141,7 @@ namespace DoctorOffice
             this.IBTTurns.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.IBTTurns.IconSize = 32;
             this.IBTTurns.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.IBTTurns.Location = new System.Drawing.Point(0, 140);
+            this.IBTTurns.Location = new System.Drawing.Point(0, 200);
             this.IBTTurns.Name = "IBTTurns";
             this.IBTTurns.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
             this.IBTTurns.Size = new System.Drawing.Size(220, 60);
