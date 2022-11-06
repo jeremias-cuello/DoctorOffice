@@ -60,6 +60,18 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DoctorOfficeDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="FRMMedics.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FRMMedics.Designer.cs">
+      <DependentUpon>FRMMedics.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FRMReception.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FRMReception.Designer.cs">
+      <DependentUpon>FRMReception.cs</DependentUpon>
+    </Compile>
     <Compile Include="FRMTurns.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -74,6 +86,17 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SoccerFieldsDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SoccerFieldsDataSet.xsd</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="FRMMedics.resx">
+      <DependentUpon>FRMMedics.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FRMReception.resx">
+      <DependentUpon>FRMReception.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FRMTurns.resx">
       <DependentUpon>FRMTurns.cs</DependentUpon>
     </EmbeddedResource>
@@ -105,6 +128,17 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="SoccerFieldsDataSet.xsc">
+      <DependentUpon>SoccerFieldsDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="SoccerFieldsDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SoccerFieldsDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SoccerFieldsDataSet.xss">
+      <DependentUpon>SoccerFieldsDataSet.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
