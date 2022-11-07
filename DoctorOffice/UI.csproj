@@ -86,11 +86,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SoccerFieldsDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>SoccerFieldsDataSet.xsd</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="FRMMedics.resx">
       <DependentUpon>FRMMedics.cs</DependentUpon>
     </EmbeddedResource>
@@ -128,17 +123,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="SoccerFieldsDataSet.xsc">
-      <DependentUpon>SoccerFieldsDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="SoccerFieldsDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>SoccerFieldsDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="SoccerFieldsDataSet.xss">
-      <DependentUpon>SoccerFieldsDataSet.xsd</DependentUpon>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

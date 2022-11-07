@@ -59,13 +59,14 @@ namespace DoctorOffice
             // TXTEmail
             // 
             this.TXTEmail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TXTEmail.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
             this.TXTEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F);
             this.TXTEmail.ForeColor = System.Drawing.Color.Gray;
             this.TXTEmail.Location = new System.Drawing.Point(18, 150);
             this.TXTEmail.Name = "TXTEmail";
             this.TXTEmail.Size = new System.Drawing.Size(179, 23);
             this.TXTEmail.TabIndex = 5;
-            this.TXTEmail.Text = "Email";
+            this.TXTEmail.Text = "email";
             this.TXTEmail.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.TXTEmail.Enter += new System.EventHandler(this.TXTEmail_Enter);
             this.TXTEmail.Leave += new System.EventHandler(this.TXTEmail_Leave);
@@ -79,7 +80,7 @@ namespace DoctorOffice
             this.TXTPhone.Name = "TXTPhone";
             this.TXTPhone.Size = new System.Drawing.Size(179, 23);
             this.TXTPhone.TabIndex = 4;
-            this.TXTPhone.Text = "Teléfono";
+            this.TXTPhone.Text = "Celular";
             this.TXTPhone.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.TXTPhone.Enter += new System.EventHandler(this.TXTPhone_Enter);
             this.TXTPhone.Leave += new System.EventHandler(this.TXTPhone_Leave);

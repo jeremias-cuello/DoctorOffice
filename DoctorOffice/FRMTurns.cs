@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
@@ -15,103 +9,156 @@ namespace DoctorOffice
     public partial class FRMTurns : Form
     {
         TextBox textBoxCurrent;
-        private struct RegExpressions
+        private struct ControlsTXT
         {
-            public static Regex Name = new Regex(@"^[a-zA-ZñÑáéíúÁÉÍÓÚ]${2}");
-            public static Regex Surname = new Regex(@"^[a-zA-ZñÑáéíúÁÉÍÓÚ]${2}");
-            public static Regex Dni = new Regex(@"^[0-9.]{1,3}\.[0-9.]{1,3}\.[0-9.]${1,3}");
-            public static Regex Phone = new Regex(@"^[0-9.]{2}\-[0-9.]{4}\-[0-9.]{4}${1,3}");
-            public static Regex Email = new Regex(@"^[a-z0-9\.]+@[a-z0-9\.]+\.[a-z0-9\.]+${1,3}");
+            public struct NameControl
+            {
+                public static string Name = "Nombre";
+                public static Regex regExpression = new Regex(@"^[a-zA-ZñÑáéíóúÁÉÍÓÚüÜ]{2,}$");
+            }
+            public struct SurnameControl
+            {
+                public static string Name = "Apellido";
+                public static Regex regExpression = new Regex(@"^[a-zA-ZñÑáéíóúÁÉÍÓÚüÜ]{2,}$");
+            }
+            public struct DNIControl
+            {
+                public static string Name = "DNI";
+                public static Regex regExpression = new Regex(@"^([0-9]{1,3}\.[0-9]{3}\.[0-9]{3}|[0-9]{8})$");
+            }
+            public struct PhoneControl
+            {
+                public static string Name = "Celular";
+                public static Regex regExpression = new Regex(@"^([0-9]{2}\-[0-9]{4}\-[0-9]{4}|[0-9]{2} [0-9]{4} [0-9]{4}|[0-9]{10})$");
+
+            }
+            public struct EmailControl
+            {
+                public static string Name = "Email";
+                public static Regex regExpression = new Regex(@"^[a-z0-9](\.?[a-z0-9])*@[a-z0-9](\.?[a-z0-9])*\.[a-z0-9]+$");
+            }
         }
+        private struct Colors
+        {
+            public static Color TXTValidatedBackColor = Color.FromArgb(166, 218, 255);
+            public static Color TXTValidatedForeColor = Color.DarkCyan;
+            public static Color TXTNotValidatedBackColor = Color.FromArgb(255, 223, 223);
+            public static Color TXTNotValidatedForeColor = Color.Maroon;
+            public static Color TXTPlaceholderBackColor = Color.White;
+            public static Color TXTPlaceholderForeColor = Color.Gray;
+            public static Color TXTNormalBackColor = Color.White;
+            public static Color TXTNormalForeColor = Color.Black;
+        }
+        bool placehoder;
 
         public FRMTurns()
         {
             InitializeComponent();
         }
 
+        #region TextBoxesHandlersOnEnter
+
         private void TXBName_Enter(object sender, EventArgs e)
         {
-            TextBoxEnter(sender, "Nombre");
+            TextBoxEnter(sender, ControlsTXT.NameControl.Name);
         }
 
         private void TXTSurname_Enter(object sender, EventArgs e)
         {
-            TextBoxEnter(sender, "Apellido");
+            TextBoxEnter(sender, ControlsTXT.SurnameControl.Name);
         }
 
         private void TXTDni_Enter(object sender, EventArgs e)
         {
-            TextBoxEnter(sender, "DNI");
+            TextBoxEnter(sender, ControlsTXT.DNIControl.Name);
         }
 
         private void TXTPhone_Enter(object sender, EventArgs e)
         {
-            TextBoxEnter(sender, "Teléfono");
+            TextBoxEnter(sender, ControlsTXT.PhoneControl.Name);
         }
 
         private void TXTEmail_Enter(object sender, EventArgs e)
         {
-            TextBoxEnter(sender, "Email");
+            TextBoxEnter(sender, ControlsTXT.EmailControl.Name);
         }
+
+        #endregion
 
         private void TXBName_Leave(object sender, EventArgs e)
         {
-            TextBoxLeave(sender, "Nombre");
-            TextBoxValidate(RegExpressions.Name);
+            placehoder = TextBoxLeave(sender, ControlsTXT.NameControl.Name);
+            if (!placehoder) TextBoxValidate(ControlsTXT.NameControl.regExpression);
         }
         private void TXTSurname_Leave(object sender, EventArgs e)
         {
-            TextBoxValidate(RegExpressions.Surname); 
-            TextBoxLeave(sender, "Apellido");
+            placehoder = TextBoxLeave(sender, ControlsTXT.SurnameControl.Name);
+            if (!placehoder) TextBoxValidate(ControlsTXT.SurnameControl.regExpression);
         }
         private void TXTDni_Leave(object sender, EventArgs e)
         {
-            TextBoxValidate(RegExpressions.Dni); 
-            TextBoxLeave(sender, "DNI");
+            placehoder = TextBoxLeave(sender, ControlsTXT.DNIControl.Name);
+            if (!placehoder) TextBoxValidate(ControlsTXT.DNIControl.regExpression);
         }
         private void TXTPhone_Leave(object sender, EventArgs e)
         {
-            TextBoxValidate(RegExpressions.Phone); 
-            TextBoxLeave(sender, "Teléfono");
+            placehoder = TextBoxLeave(sender, ControlsTXT.PhoneControl.Name);
+            if (!placehoder) TextBoxValidate(ControlsTXT.PhoneControl.regExpression);
         }
         private void TXTEmail_Leave(object sender, EventArgs e)
         {
-            TextBoxValidate(RegExpressions.Email);
-            TextBoxLeave(sender, "Email");
+            placehoder = TextBoxLeave(sender, ControlsTXT.EmailControl.Name);
+            if (!placehoder) TextBoxValidate(ControlsTXT.EmailControl.regExpression);
         }
 
-        private void TextBoxEnter(object sender, string data)
+        private void TextBoxEnter(object sender, string placeholder)
         {
+            // resumen: es la programacion para dar la impresion de un placeholder en HTML.
+            // cuando el textBox esta en foco, si el placeholder es igual al texto del texBox
+            // actual, se borra para que puedo escribir sin borrar el placeholder
+
+            // obtiene el textBox en foco actual
             textBoxCurrent = (TextBox)sender;
 
-            if (textBoxCurrent.Text.Trim() == data || textBoxCurrent.Text.Trim() == "")
+            // borra el placeholder. 
+            if (textBoxCurrent.Text.Trim() == placeholder)
             {
                 textBoxCurrent.Text = "";
-                textBoxCurrent.ForeColor = Color.Black;
+                textBoxCurrent.BackColor = Colors.TXTPlaceholderBackColor;
+                textBoxCurrent.ForeColor = Colors.TXTPlaceholderForeColor;
             }
         }
-        private void TextBoxLeave(object sender, string data)
-        {
-            textBoxCurrent = (TextBox)sender;
 
-            if (textBoxCurrent.Text.Trim() == data || textBoxCurrent.Text.Trim() == "")
-            {
-                textBoxCurrent.Text = data;
-                textBoxCurrent.ForeColor = Color.Gray;
-            }
-        }
         private void TextBoxValidate(Regex regularExpression)
         {
-            if (!Regex.IsMatch(textBoxCurrent.Text, Convert.ToString(regularExpression)))
+            if (Regex.IsMatch(textBoxCurrent.Text, Convert.ToString(regularExpression)))
             {
-                textBoxCurrent.BackColor = Color.FromArgb(166, 218, 255);
-                textBoxCurrent.ForeColor = Color.DarkCyan;
+                // valido
+                textBoxCurrent.BackColor = Colors.TXTValidatedBackColor;
+                textBoxCurrent.ForeColor = Colors.TXTValidatedForeColor;
             }
             else
             {
-                textBoxCurrent.BackColor = Color.FromArgb(255, 223, 223);
-                textBoxCurrent.ForeColor = Color.Maroon;
+                // invalido
+                textBoxCurrent.BackColor = Colors.TXTNotValidatedBackColor;
+                textBoxCurrent.ForeColor = Colors.TXTNotValidatedForeColor;
             }
+        }
+
+        private bool TextBoxLeave(object sender, string placeholder)
+        {
+            bool result = false;
+            textBoxCurrent = (TextBox)sender;
+
+            if (textBoxCurrent.Text.Trim() == placeholder || textBoxCurrent.Text.Trim() == "")
+            {
+                textBoxCurrent.Text = placeholder;
+                textBoxCurrent.BackColor = Colors.TXTPlaceholderBackColor;
+                textBoxCurrent.ForeColor = Colors.TXTPlaceholderForeColor;
+                result = true;
+            }
+
+            return result;
         }
     }
 }
