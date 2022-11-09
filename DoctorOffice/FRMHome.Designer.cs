@@ -30,10 +30,10 @@ namespace DoctorOffice
         private void InitializeComponent()
         {
             this.PNLMenu = new System.Windows.Forms.Panel();
-            this.IBTContact = new FontAwesome.Sharp.IconButton();
             this.IBTMedics = new FontAwesome.Sharp.IconButton();
-            this.IBTReception = new FontAwesome.Sharp.IconButton();
             this.IBTTurns = new FontAwesome.Sharp.IconButton();
+            this.IBTContact = new FontAwesome.Sharp.IconButton();
+            this.IBTReception = new FontAwesome.Sharp.IconButton();
             this.PNLIcon = new System.Windows.Forms.Panel();
             this.IPBIcon = new FontAwesome.Sharp.IconPictureBox();
             this.PNLNav = new System.Windows.Forms.Panel();
@@ -64,6 +64,48 @@ namespace DoctorOffice
             this.PNLMenu.Size = new System.Drawing.Size(220, 474);
             this.PNLMenu.TabIndex = 0;
             // 
+            // IBTMedics
+            // 
+            this.IBTMedics.Dock = System.Windows.Forms.DockStyle.Top;
+            this.IBTMedics.FlatAppearance.BorderSize = 0;
+            this.IBTMedics.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.IBTMedics.Font = new System.Drawing.Font("Leelawadee UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.IBTMedics.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(232)))));
+            this.IBTMedics.IconChar = FontAwesome.Sharp.IconChar.Stethoscope;
+            this.IBTMedics.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(232)))));
+            this.IBTMedics.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.IBTMedics.IconSize = 32;
+            this.IBTMedics.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.IBTMedics.Location = new System.Drawing.Point(0, 260);
+            this.IBTMedics.Name = "IBTMedics";
+            this.IBTMedics.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
+            this.IBTMedics.Size = new System.Drawing.Size(220, 60);
+            this.IBTMedics.TabIndex = 2;
+            this.IBTMedics.Text = "Médicos";
+            this.IBTMedics.UseVisualStyleBackColor = false;
+            this.IBTMedics.Click += new System.EventHandler(this.IBTMedics_Click);
+            // 
+            // IBTTurns
+            // 
+            this.IBTTurns.Dock = System.Windows.Forms.DockStyle.Top;
+            this.IBTTurns.FlatAppearance.BorderSize = 0;
+            this.IBTTurns.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.IBTTurns.Font = new System.Drawing.Font("Leelawadee UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.IBTTurns.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(232)))));
+            this.IBTTurns.IconChar = FontAwesome.Sharp.IconChar.CalendarAlt;
+            this.IBTTurns.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(232)))));
+            this.IBTTurns.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.IBTTurns.IconSize = 32;
+            this.IBTTurns.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.IBTTurns.Location = new System.Drawing.Point(0, 200);
+            this.IBTTurns.Name = "IBTTurns";
+            this.IBTTurns.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
+            this.IBTTurns.Size = new System.Drawing.Size(220, 60);
+            this.IBTTurns.TabIndex = 1;
+            this.IBTTurns.Text = "Turnos";
+            this.IBTTurns.UseVisualStyleBackColor = false;
+            this.IBTTurns.Click += new System.EventHandler(this.IBTTurns_Click);
+            // 
             // IBTContact
             // 
             this.IBTContact.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(143)))), ((int)(((byte)(227)))));
@@ -87,27 +129,6 @@ namespace DoctorOffice
             this.IBTContact.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.IBTContact.UseVisualStyleBackColor = false;
             // 
-            // IBTMedics
-            // 
-            this.IBTMedics.Dock = System.Windows.Forms.DockStyle.Top;
-            this.IBTMedics.FlatAppearance.BorderSize = 0;
-            this.IBTMedics.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.IBTMedics.Font = new System.Drawing.Font("Leelawadee UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.IBTMedics.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(232)))));
-            this.IBTMedics.IconChar = FontAwesome.Sharp.IconChar.Stethoscope;
-            this.IBTMedics.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(232)))));
-            this.IBTMedics.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.IBTMedics.IconSize = 32;
-            this.IBTMedics.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.IBTMedics.Location = new System.Drawing.Point(0, 260);
-            this.IBTMedics.Name = "IBTMedics";
-            this.IBTMedics.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
-            this.IBTMedics.Size = new System.Drawing.Size(220, 60);
-            this.IBTMedics.TabIndex = 2;
-            this.IBTMedics.Text = "Médicos";
-            this.IBTMedics.UseVisualStyleBackColor = false;
-            this.IBTMedics.Click += new System.EventHandler(this.IBTMedics_Click);
-            // 
             // IBTReception
             // 
             this.IBTReception.Dock = System.Windows.Forms.DockStyle.Top;
@@ -128,27 +149,6 @@ namespace DoctorOffice
             this.IBTReception.Text = "Recepción";
             this.IBTReception.UseVisualStyleBackColor = false;
             this.IBTReception.Click += new System.EventHandler(this.IBTReception_Click);
-            // 
-            // IBTTurns
-            // 
-            this.IBTTurns.Dock = System.Windows.Forms.DockStyle.Top;
-            this.IBTTurns.FlatAppearance.BorderSize = 0;
-            this.IBTTurns.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.IBTTurns.Font = new System.Drawing.Font("Leelawadee UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.IBTTurns.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(232)))));
-            this.IBTTurns.IconChar = FontAwesome.Sharp.IconChar.CalendarAlt;
-            this.IBTTurns.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(232)))));
-            this.IBTTurns.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.IBTTurns.IconSize = 32;
-            this.IBTTurns.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.IBTTurns.Location = new System.Drawing.Point(0, 200);
-            this.IBTTurns.Name = "IBTTurns";
-            this.IBTTurns.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
-            this.IBTTurns.Size = new System.Drawing.Size(220, 60);
-            this.IBTTurns.TabIndex = 1;
-            this.IBTTurns.Text = "Turnos";
-            this.IBTTurns.UseVisualStyleBackColor = false;
-            this.IBTTurns.Click += new System.EventHandler(this.IBTTurns_Click);
             // 
             // PNLIcon
             // 
@@ -183,7 +183,7 @@ namespace DoctorOffice
             this.PNLNav.Dock = System.Windows.Forms.DockStyle.Top;
             this.PNLNav.Location = new System.Drawing.Point(220, 0);
             this.PNLNav.Name = "PNLNav";
-            this.PNLNav.Size = new System.Drawing.Size(624, 80);
+            this.PNLNav.Size = new System.Drawing.Size(695, 80);
             this.PNLNav.TabIndex = 1;
             this.PNLNav.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PNLNav_MouseDown);
             // 
@@ -196,7 +196,7 @@ namespace DoctorOffice
             this.IPBClose.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.IPBClose.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.IPBClose.IconSize = 21;
-            this.IPBClose.Location = new System.Drawing.Point(589, 0);
+            this.IPBClose.Location = new System.Drawing.Point(660, 0);
             this.IPBClose.Name = "IPBClose";
             this.IPBClose.Padding = new System.Windows.Forms.Padding(9, 2, 0, 0);
             this.IPBClose.Size = new System.Drawing.Size(35, 21);
@@ -238,7 +238,7 @@ namespace DoctorOffice
             this.PNLCurrentForm.ForeColor = System.Drawing.SystemColors.ControlText;
             this.PNLCurrentForm.Location = new System.Drawing.Point(220, 88);
             this.PNLCurrentForm.Name = "PNLCurrentForm";
-            this.PNLCurrentForm.Size = new System.Drawing.Size(624, 386);
+            this.PNLCurrentForm.Size = new System.Drawing.Size(695, 386);
             this.PNLCurrentForm.TabIndex = 2;
             // 
             // PNLShadow
@@ -247,7 +247,7 @@ namespace DoctorOffice
             this.PNLShadow.Dock = System.Windows.Forms.DockStyle.Top;
             this.PNLShadow.Location = new System.Drawing.Point(220, 80);
             this.PNLShadow.Name = "PNLShadow";
-            this.PNLShadow.Size = new System.Drawing.Size(624, 8);
+            this.PNLShadow.Size = new System.Drawing.Size(695, 8);
             this.PNLShadow.TabIndex = 3;
             // 
             // FRMHome
@@ -255,7 +255,7 @@ namespace DoctorOffice
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(844, 474);
+            this.ClientSize = new System.Drawing.Size(915, 474);
             this.ControlBox = false;
             this.Controls.Add(this.PNLCurrentForm);
             this.Controls.Add(this.PNLShadow);

@@ -34,7 +34,7 @@ namespace DoctorOffice
             }
             public struct EmailControl
             {
-                public static string Name = "Email";
+                public static string Name = "email";
                 public static Regex regExpression = new Regex(@"^[a-z0-9](\.?[a-z0-9])*@[a-z0-9](\.?[a-z0-9])*\.[a-z0-9]+$");
             }
         }
@@ -124,8 +124,8 @@ namespace DoctorOffice
             if (textBoxCurrent.Text.Trim() == placeholder)
             {
                 textBoxCurrent.Text = "";
-                textBoxCurrent.BackColor = Colors.TXTPlaceholderBackColor;
-                textBoxCurrent.ForeColor = Colors.TXTPlaceholderForeColor;
+                textBoxCurrent.BackColor = Colors.TXTNormalBackColor;
+                textBoxCurrent.ForeColor = Colors.TXTNormalForeColor;
             }
         }
 

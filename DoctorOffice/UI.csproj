@@ -102,6 +102,7 @@
     <EmbeddedResource Include="FRMHome.resx">
       <DependentUpon>FRMHome.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include=".editorconfig" />
     <None Include="DoctorOfficeDataSet.xsc">
       <DependentUpon>DoctorOfficeDataSet.xsd</DependentUpon>
     </None>

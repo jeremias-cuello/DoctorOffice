@@ -29,103 +29,103 @@ namespace DoctorOffice
         /// </summary>
         private void InitializeComponent()
         {
-            this.GPBPatients = new System.Windows.Forms.GroupBox();
-            this.TXTEmail = new System.Windows.Forms.TextBox();
+            this.LBLPatients = new System.Windows.Forms.Label();
+            this.GPBTurn = new System.Windows.Forms.GroupBox();
+            this.CMBMedics = new System.Windows.Forms.ComboBox();
+            this.TXTTime = new System.Windows.Forms.TextBox();
             this.TXTPhone = new System.Windows.Forms.TextBox();
             this.TXTDni = new System.Windows.Forms.TextBox();
-            this.TXTSurname = new System.Windows.Forms.TextBox();
-            this.TXBName = new System.Windows.Forms.TextBox();
+            this.TXBNNumber = new System.Windows.Forms.TextBox();
             this.IBTRegister = new FontAwesome.Sharp.IconButton();
-            this.GPBPatients.SuspendLayout();
+            this.iconButton1 = new FontAwesome.Sharp.IconButton();
+            this.LSTPatients = new System.Windows.Forms.ListBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.GPBTurn.SuspendLayout();
             this.SuspendLayout();
             // 
-            // GPBPatients
+            // LBLPatients
             // 
-            this.GPBPatients.Controls.Add(this.TXTEmail);
-            this.GPBPatients.Controls.Add(this.TXTPhone);
-            this.GPBPatients.Controls.Add(this.TXTDni);
-            this.GPBPatients.Controls.Add(this.TXTSurname);
-            this.GPBPatients.Controls.Add(this.TXBName);
-            this.GPBPatients.Controls.Add(this.IBTRegister);
-            this.GPBPatients.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.GPBPatients.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.GPBPatients.Location = new System.Drawing.Point(12, 12);
-            this.GPBPatients.Name = "GPBPatients";
-            this.GPBPatients.Size = new System.Drawing.Size(215, 243);
-            this.GPBPatients.TabIndex = 1;
-            this.GPBPatients.TabStop = false;
-            this.GPBPatients.Text = "Paciente";
+            this.LBLPatients.AutoSize = true;
+            this.LBLPatients.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LBLPatients.Location = new System.Drawing.Point(8, 10);
+            this.LBLPatients.Name = "LBLPatients";
+            this.LBLPatients.Size = new System.Drawing.Size(79, 20);
+            this.LBLPatients.TabIndex = 23;
+            this.LBLPatients.Text = "Pacientes";
             // 
-            // TXTEmail
+            // GPBTurn
             // 
-            this.TXTEmail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TXTEmail.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
-            this.TXTEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F);
-            this.TXTEmail.ForeColor = System.Drawing.Color.Gray;
-            this.TXTEmail.Location = new System.Drawing.Point(18, 150);
-            this.TXTEmail.Name = "TXTEmail";
-            this.TXTEmail.Size = new System.Drawing.Size(179, 23);
-            this.TXTEmail.TabIndex = 5;
-            this.TXTEmail.Text = "email";
-            this.TXTEmail.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.TXTEmail.Enter += new System.EventHandler(this.TXTEmail_Enter);
-            this.TXTEmail.Leave += new System.EventHandler(this.TXTEmail_Leave);
+            this.GPBTurn.Controls.Add(this.CMBMedics);
+            this.GPBTurn.Controls.Add(this.TXTTime);
+            this.GPBTurn.Controls.Add(this.TXTPhone);
+            this.GPBTurn.Controls.Add(this.TXTDni);
+            this.GPBTurn.Controls.Add(this.TXBNNumber);
+            this.GPBTurn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.GPBTurn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.GPBTurn.Location = new System.Drawing.Point(479, 26);
+            this.GPBTurn.Name = "GPBTurn";
+            this.GPBTurn.Size = new System.Drawing.Size(221, 197);
+            this.GPBTurn.TabIndex = 24;
+            this.GPBTurn.TabStop = false;
+            this.GPBTurn.Text = "Turno";
+            // 
+            // CMBMedics
+            // 
+            this.CMBMedics.FormattingEnabled = true;
+            this.CMBMedics.Items.AddRange(new object[] {
+            "Seleccionar Médico"});
+            this.CMBMedics.Location = new System.Drawing.Point(18, 150);
+            this.CMBMedics.Name = "CMBMedics";
+            this.CMBMedics.Size = new System.Drawing.Size(179, 33);
+            this.CMBMedics.TabIndex = 8;
+            // 
+            // TXTTime
+            // 
+            this.TXTTime.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TXTTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F);
+            this.TXTTime.ForeColor = System.Drawing.Color.Gray;
+            this.TXTTime.Location = new System.Drawing.Point(18, 121);
+            this.TXTTime.Name = "TXTTime";
+            this.TXTTime.Size = new System.Drawing.Size(179, 23);
+            this.TXTTime.TabIndex = 7;
+            this.TXTTime.Text = "Horario";
+            this.TXTTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // TXTPhone
             // 
             this.TXTPhone.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TXTPhone.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F);
             this.TXTPhone.ForeColor = System.Drawing.Color.Gray;
-            this.TXTPhone.Location = new System.Drawing.Point(18, 121);
+            this.TXTPhone.Location = new System.Drawing.Point(18, 92);
             this.TXTPhone.Name = "TXTPhone";
             this.TXTPhone.Size = new System.Drawing.Size(179, 23);
             this.TXTPhone.TabIndex = 4;
             this.TXTPhone.Text = "Celular";
             this.TXTPhone.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.TXTPhone.Enter += new System.EventHandler(this.TXTPhone_Enter);
-            this.TXTPhone.Leave += new System.EventHandler(this.TXTPhone_Leave);
             // 
             // TXTDni
             // 
             this.TXTDni.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TXTDni.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F);
             this.TXTDni.ForeColor = System.Drawing.Color.Gray;
-            this.TXTDni.Location = new System.Drawing.Point(18, 92);
+            this.TXTDni.Location = new System.Drawing.Point(18, 63);
             this.TXTDni.Name = "TXTDni";
             this.TXTDni.Size = new System.Drawing.Size(179, 23);
             this.TXTDni.TabIndex = 3;
-            this.TXTDni.Text = "DNI";
+            this.TXTDni.Text = "Fecha";
             this.TXTDni.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.TXTDni.Enter += new System.EventHandler(this.TXTDni_Enter);
-            this.TXTDni.Leave += new System.EventHandler(this.TXTDni_Leave);
             // 
-            // TXTSurname
+            // TXBNNumber
             // 
-            this.TXTSurname.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TXTSurname.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F);
-            this.TXTSurname.ForeColor = System.Drawing.Color.Gray;
-            this.TXTSurname.Location = new System.Drawing.Point(18, 63);
-            this.TXTSurname.Name = "TXTSurname";
-            this.TXTSurname.Size = new System.Drawing.Size(179, 23);
-            this.TXTSurname.TabIndex = 2;
-            this.TXTSurname.Text = "Apellido";
-            this.TXTSurname.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.TXTSurname.Enter += new System.EventHandler(this.TXTSurname_Enter);
-            this.TXTSurname.Leave += new System.EventHandler(this.TXTSurname_Leave);
-            // 
-            // TXBName
-            // 
-            this.TXBName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TXBName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F);
-            this.TXBName.ForeColor = System.Drawing.Color.Gray;
-            this.TXBName.Location = new System.Drawing.Point(18, 34);
-            this.TXBName.Name = "TXBName";
-            this.TXBName.Size = new System.Drawing.Size(179, 23);
-            this.TXBName.TabIndex = 1;
-            this.TXBName.Text = "Nombre";
-            this.TXBName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.TXBName.Enter += new System.EventHandler(this.TXBName_Enter);
-            this.TXBName.Leave += new System.EventHandler(this.TXBName_Leave);
+            this.TXBNNumber.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TXBNNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F);
+            this.TXBNNumber.ForeColor = System.Drawing.Color.Gray;
+            this.TXBNNumber.Location = new System.Drawing.Point(18, 34);
+            this.TXBNNumber.Name = "TXBNNumber";
+            this.TXBNNumber.Size = new System.Drawing.Size(179, 23);
+            this.TXBNNumber.TabIndex = 1;
+            this.TXBNNumber.Text = "Número";
+            this.TXBNNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // IBTRegister
             // 
@@ -137,38 +137,85 @@ namespace DoctorOffice
             this.IBTRegister.IconChar = FontAwesome.Sharp.IconChar.None;
             this.IBTRegister.IconColor = System.Drawing.Color.Black;
             this.IBTRegister.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.IBTRegister.Location = new System.Drawing.Point(34, 192);
+            this.IBTRegister.Location = new System.Drawing.Point(497, 233);
             this.IBTRegister.Name = "IBTRegister";
-            this.IBTRegister.Size = new System.Drawing.Size(151, 34);
+            this.IBTRegister.Size = new System.Drawing.Size(179, 35);
             this.IBTRegister.TabIndex = 6;
             this.IBTRegister.Text = "Registrar";
             this.IBTRegister.UseVisualStyleBackColor = false;
+            // 
+            // iconButton1
+            // 
+            this.iconButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(101)))), ((int)(((byte)(201)))));
+            this.iconButton1.FlatAppearance.BorderSize = 0;
+            this.iconButton1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(73)))), ((int)(((byte)(173)))));
+            this.iconButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.iconButton1.IconColor = System.Drawing.Color.Black;
+            this.iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconButton1.Location = new System.Drawing.Point(497, 274);
+            this.iconButton1.Name = "iconButton1";
+            this.iconButton1.Size = new System.Drawing.Size(179, 35);
+            this.iconButton1.TabIndex = 25;
+            this.iconButton1.Text = "Modificar";
+            this.iconButton1.UseVisualStyleBackColor = false;
+            // 
+            // LSTPatients
+            // 
+            this.LSTPatients.FormattingEnabled = true;
+            this.LSTPatients.Location = new System.Drawing.Point(12, 33);
+            this.LSTPatients.Name = "LSTPatients";
+            this.LSTPatients.Size = new System.Drawing.Size(447, 121);
+            this.LSTPatients.TabIndex = 26;
+            // 
+            // textBox2
+            // 
+            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox2.Location = new System.Drawing.Point(12, 160);
+            this.textBox2.Multiline = true;
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(207, 30);
+            this.textBox2.TabIndex = 27;
+            this.textBox2.Text = "Buscar";
+            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // FRMTurns
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(132)))), ((int)(((byte)(255)))));
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(717, 525);
             this.ControlBox = false;
-            this.Controls.Add(this.GPBPatients);
+            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.LSTPatients);
+            this.Controls.Add(this.iconButton1);
+            this.Controls.Add(this.GPBTurn);
+            this.Controls.Add(this.LBLPatients);
+            this.Controls.Add(this.IBTRegister);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FRMTurns";
             this.Text = "Turnos";
-            this.GPBPatients.ResumeLayout(false);
-            this.GPBPatients.PerformLayout();
+            this.GPBTurn.ResumeLayout(false);
+            this.GPBTurn.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.GroupBox GPBPatients;
-        private FontAwesome.Sharp.IconButton IBTRegister;
-        private System.Windows.Forms.TextBox TXBName;
-        private System.Windows.Forms.TextBox TXTSurname;
-        private System.Windows.Forms.TextBox TXTEmail;
+        private System.Windows.Forms.Label LBLPatients;
+        private System.Windows.Forms.GroupBox GPBTurn;
+        private System.Windows.Forms.ComboBox CMBMedics;
+        private System.Windows.Forms.TextBox TXTTime;
         private System.Windows.Forms.TextBox TXTPhone;
         private System.Windows.Forms.TextBox TXTDni;
+        private System.Windows.Forms.TextBox TXBNNumber;
+        private FontAwesome.Sharp.IconButton IBTRegister;
+        private FontAwesome.Sharp.IconButton iconButton1;
+        private System.Windows.Forms.ListBox LSTPatients;
+        private System.Windows.Forms.TextBox textBox2;
     }
 }

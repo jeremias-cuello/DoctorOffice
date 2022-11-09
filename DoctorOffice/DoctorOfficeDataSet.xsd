@@ -236,7 +236,7 @@ SELECT TurnKey, Number, Date, Horary, MedicKey, PatientKey FROM Turns WHERE (Tur
   <xs:element name="DoctorOfficeDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="DoctorOfficeDataSet" msprop:Generator_UserDSName="DoctorOfficeDataSet">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="Medics" msprop:Generator_TableClassName="MedicsDataTable" msprop:Generator_TableVarName="tableMedics" msprop:Generator_RowChangedName="MedicsRowChanged" msprop:Generator_TablePropName="Medics" msprop:Generator_RowDeletingName="MedicsRowDeleting" msprop:Generator_RowChangingName="MedicsRowChanging" msprop:Generator_RowEvHandlerName="MedicsRowChangeEventHandler" msprop:Generator_RowDeletedName="MedicsRowDeleted" msprop:Generator_RowClassName="MedicsRow" msprop:Generator_UserTableName="Medics" msprop:Generator_RowEvArgName="MedicsRowChangeEvent">
+        <xs:element name="Medics" msprop:Generator_TableClassName="MedicsDataTable" msprop:Generator_TableVarName="tableMedics" msprop:Generator_TablePropName="Medics" msprop:Generator_RowDeletingName="MedicsRowDeleting" msprop:Generator_RowChangingName="MedicsRowChanging" msprop:Generator_RowEvHandlerName="MedicsRowChangeEventHandler" msprop:Generator_RowDeletedName="MedicsRowDeleted" msprop:Generator_UserTableName="Medics" msprop:Generator_RowChangedName="MedicsRowChanged" msprop:Generator_RowEvArgName="MedicsRowChangeEvent" msprop:Generator_RowClassName="MedicsRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="MedicKey" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msprop:Generator_ColumnVarNameInTable="columnMedicKey" msprop:Generator_ColumnPropNameInRow="MedicKey" msprop:Generator_ColumnPropNameInTable="MedicKeyColumn" msprop:Generator_UserColumnName="MedicKey" type="xs:int" />
@@ -258,7 +258,7 @@ SELECT TurnKey, Number, Date, Horary, MedicKey, PatientKey FROM Turns WHERE (Tur
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Patients" msprop:Generator_TableClassName="PatientsDataTable" msprop:Generator_TableVarName="tablePatients" msprop:Generator_RowChangedName="PatientsRowChanged" msprop:Generator_TablePropName="Patients" msprop:Generator_RowDeletingName="PatientsRowDeleting" msprop:Generator_RowChangingName="PatientsRowChanging" msprop:Generator_RowEvHandlerName="PatientsRowChangeEventHandler" msprop:Generator_RowDeletedName="PatientsRowDeleted" msprop:Generator_RowClassName="PatientsRow" msprop:Generator_UserTableName="Patients" msprop:Generator_RowEvArgName="PatientsRowChangeEvent">
+        <xs:element name="Patients" msprop:Generator_TableClassName="PatientsDataTable" msprop:Generator_TableVarName="tablePatients" msprop:Generator_TablePropName="Patients" msprop:Generator_RowDeletingName="PatientsRowDeleting" msprop:Generator_RowChangingName="PatientsRowChanging" msprop:Generator_RowEvHandlerName="PatientsRowChangeEventHandler" msprop:Generator_RowDeletedName="PatientsRowDeleted" msprop:Generator_UserTableName="Patients" msprop:Generator_RowChangedName="PatientsRowChanged" msprop:Generator_RowEvArgName="PatientsRowChangeEvent" msprop:Generator_RowClassName="PatientsRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="PatientKey" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msprop:Generator_ColumnVarNameInTable="columnPatientKey" msprop:Generator_ColumnPropNameInRow="PatientKey" msprop:Generator_ColumnPropNameInTable="PatientKeyColumn" msprop:Generator_UserColumnName="PatientKey" type="xs:int" />
@@ -289,7 +289,7 @@ SELECT TurnKey, Number, Date, Horary, MedicKey, PatientKey FROM Turns WHERE (Tur
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Turns" msprop:Generator_TableClassName="TurnsDataTable" msprop:Generator_TableVarName="tableTurns" msprop:Generator_RowChangedName="TurnsRowChanged" msprop:Generator_TablePropName="Turns" msprop:Generator_RowDeletingName="TurnsRowDeleting" msprop:Generator_RowChangingName="TurnsRowChanging" msprop:Generator_RowEvHandlerName="TurnsRowChangeEventHandler" msprop:Generator_RowDeletedName="TurnsRowDeleted" msprop:Generator_RowClassName="TurnsRow" msprop:Generator_UserTableName="Turns" msprop:Generator_RowEvArgName="TurnsRowChangeEvent">
+        <xs:element name="Turns" msprop:Generator_TableClassName="TurnsDataTable" msprop:Generator_TableVarName="tableTurns" msprop:Generator_TablePropName="Turns" msprop:Generator_RowDeletingName="TurnsRowDeleting" msprop:Generator_RowChangingName="TurnsRowChanging" msprop:Generator_RowEvHandlerName="TurnsRowChangeEventHandler" msprop:Generator_RowDeletedName="TurnsRowDeleted" msprop:Generator_UserTableName="Turns" msprop:Generator_RowChangedName="TurnsRowChanged" msprop:Generator_RowEvArgName="TurnsRowChangeEvent" msprop:Generator_RowClassName="TurnsRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="TurnKey" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msprop:Generator_ColumnVarNameInTable="columnTurnKey" msprop:Generator_ColumnPropNameInRow="TurnKey" msprop:Generator_ColumnPropNameInTable="TurnKeyColumn" msprop:Generator_UserColumnName="TurnKey" type="xs:int" />
@@ -309,6 +309,11 @@ SELECT TurnKey, Number, Date, Horary, MedicKey, PatientKey FROM Turns WHERE (Tur
     </xs:unique>
     <xs:unique name="Constraint2">
       <xs:selector xpath=".//mstns:Medics" />
+      <xs:field xpath="mstns:NumberTuition" />
+    </xs:unique>
+    <xs:unique name="MedicsKey1">
+      <xs:selector xpath=".//mstns:Medics" />
+      <xs:field xpath="mstns:MedicKey" />
       <xs:field xpath="mstns:NumberTuition" />
     </xs:unique>
     <xs:unique name="Patients_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
@@ -335,5 +340,13 @@ SELECT TurnKey, Number, Date, Horary, MedicKey, PatientKey FROM Turns WHERE (Tur
       <xs:selector xpath=".//mstns:Turns" />
       <xs:field xpath="mstns:Number" />
     </xs:unique>
+    <xs:keyref name="FK_Medics_Turns" refer="Constraint1" msprop:rel_Generator_UserChildTable="Turns" msprop:rel_Generator_ChildPropName="GetTurnsRows" msprop:rel_Generator_UserRelationName="FK_Medics_Turns" msprop:rel_Generator_ParentPropName="MedicsRow" msprop:rel_Generator_RelationVarName="relationFK_Medics_Turns" msprop:rel_Generator_UserParentTable="Medics">
+      <xs:selector xpath=".//mstns:Turns" />
+      <xs:field xpath="mstns:MedicKey" />
+    </xs:keyref>
+    <xs:keyref name="FK_Patients_Turns" refer="Patients_Constraint1" msprop:rel_Generator_UserChildTable="Turns" msprop:rel_Generator_ChildPropName="GetTurnsRows" msprop:rel_Generator_UserRelationName="FK_Patients_Turns" msprop:rel_Generator_ParentPropName="PatientsRow" msprop:rel_Generator_RelationVarName="relationFK_Patients_Turns" msprop:rel_Generator_UserParentTable="Patients">
+      <xs:selector xpath=".//mstns:Turns" />
+      <xs:field xpath="mstns:PatientKey" />
+    </xs:keyref>
   </xs:element>
 </xs:schema>

@@ -30,6 +30,10 @@ namespace DoctorOffice {
         
         private TurnsDataTable tableTurns;
         
+        private global::System.Data.DataRelation relationFK_Medics_Turns;
+        
+        private global::System.Data.DataRelation relationFK_Patients_Turns;
+        
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -242,6 +246,8 @@ namespace DoctorOffice {
                     this.tableTurns.InitVars();
                 }
             }
+            this.relationFK_Medics_Turns = this.Relations["FK_Medics_Turns"];
+            this.relationFK_Patients_Turns = this.Relations["FK_Patients_Turns"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -258,6 +264,29 @@ namespace DoctorOffice {
             base.Tables.Add(this.tablePatients);
             this.tableTurns = new TurnsDataTable();
             base.Tables.Add(this.tableTurns);
+            global::System.Data.ForeignKeyConstraint fkc;
+            fkc = new global::System.Data.ForeignKeyConstraint("FK_Medics_Turns", new global::System.Data.DataColumn[] {
+                        this.tableMedics.MedicKeyColumn}, new global::System.Data.DataColumn[] {
+                        this.tableTurns.MedicKeyColumn});
+            this.tableTurns.Constraints.Add(fkc);
+            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
+            fkc.DeleteRule = global::System.Data.Rule.Cascade;
+            fkc.UpdateRule = global::System.Data.Rule.Cascade;
+            fkc = new global::System.Data.ForeignKeyConstraint("FK_Patients_Turns", new global::System.Data.DataColumn[] {
+                        this.tablePatients.PatientKeyColumn}, new global::System.Data.DataColumn[] {
+                        this.tableTurns.PatientKeyColumn});
+            this.tableTurns.Constraints.Add(fkc);
+            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
+            fkc.DeleteRule = global::System.Data.Rule.Cascade;
+            fkc.UpdateRule = global::System.Data.Rule.Cascade;
+            this.relationFK_Medics_Turns = new global::System.Data.DataRelation("FK_Medics_Turns", new global::System.Data.DataColumn[] {
+                        this.tableMedics.MedicKeyColumn}, new global::System.Data.DataColumn[] {
+                        this.tableTurns.MedicKeyColumn}, false);
+            this.Relations.Add(this.relationFK_Medics_Turns);
+            this.relationFK_Patients_Turns = new global::System.Data.DataRelation("FK_Patients_Turns", new global::System.Data.DataColumn[] {
+                        this.tablePatients.PatientKeyColumn}, new global::System.Data.DataColumn[] {
+                        this.tableTurns.PatientKeyColumn}, false);
+            this.Relations.Add(this.relationFK_Patients_Turns);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -515,6 +544,9 @@ namespace DoctorOffice {
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnMedicKey}, true));
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint2", new global::System.Data.DataColumn[] {
+                                this.columnNumberTuition}, false));
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("MedicsKey1", new global::System.Data.DataColumn[] {
+                                this.columnMedicKey,
                                 this.columnNumberTuition}, false));
                 this.columnMedicKey.AutoIncrement = true;
                 this.columnMedicKey.AutoIncrementSeed = -1;
@@ -1142,15 +1174,21 @@ namespace DoctorOffice {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public TurnsRow AddTurnsRow(int Number, System.DateTime Date, System.TimeSpan Horary, int MedicKey, int PatientKey) {
+            public TurnsRow AddTurnsRow(int Number, System.DateTime Date, System.TimeSpan Horary, MedicsRow parentMedicsRowByFK_Medics_Turns, PatientsRow parentPatientsRowByFK_Patients_Turns) {
                 TurnsRow rowTurnsRow = ((TurnsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         Number,
                         Date,
                         Horary,
-                        MedicKey,
-                        PatientKey};
+                        null,
+                        null};
+                if ((parentMedicsRowByFK_Medics_Turns != null)) {
+                    columnValuesArray[4] = parentMedicsRowByFK_Medics_Turns[0];
+                }
+                if ((parentPatientsRowByFK_Patients_Turns != null)) {
+                    columnValuesArray[5] = parentPatientsRowByFK_Patients_Turns[0];
+                }
                 rowTurnsRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowTurnsRow);
                 return rowTurnsRow;
@@ -1448,6 +1486,17 @@ namespace DoctorOffice {
             public void SetNumberTuitionNull() {
                 this[this.tableMedics.NumberTuitionColumn] = global::System.Convert.DBNull;
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public TurnsRow[] GetTurnsRows() {
+                if ((this.Table.ChildRelations["FK_Medics_Turns"] == null)) {
+                    return new TurnsRow[0];
+                }
+                else {
+                    return ((TurnsRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Medics_Turns"])));
+                }
+            }
         }
         
         /// <summary>
@@ -1642,6 +1691,17 @@ namespace DoctorOffice {
             public void SetClinicalHistoryNull() {
                 this[this.tablePatients.ClinicalHistoryColumn] = global::System.Convert.DBNull;
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public TurnsRow[] GetTurnsRows() {
+                if ((this.Table.ChildRelations["FK_Patients_Turns"] == null)) {
+                    return new TurnsRow[0];
+                }
+                else {
+                    return ((TurnsRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Patients_Turns"])));
+                }
+            }
         }
         
         /// <summary>
@@ -1736,6 +1796,28 @@ namespace DoctorOffice {
                 }
                 set {
                     this[this.tableTurns.PatientKeyColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public MedicsRow MedicsRow {
+                get {
+                    return ((MedicsRow)(this.GetParentRow(this.Table.ParentRelations["FK_Medics_Turns"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_Medics_Turns"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public PatientsRow PatientsRow {
+                get {
+                    return ((PatientsRow)(this.GetParentRow(this.Table.ParentRelations["FK_Patients_Turns"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_Patients_Turns"]);
                 }
             }
             
