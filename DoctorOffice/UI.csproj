@@ -32,13 +32,22 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="FontAwesome.Sharp, Version=6.1.1.0, Culture=neutral, PublicKeyToken=d16d1e4e568ec10f, processorArchitecture=MSIL">
       <HintPath>..\packages\FontAwesome.Sharp.6.1.1\lib\net45\FontAwesome.Sharp.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -59,6 +68,21 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DoctorOfficeDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFrameWork.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EntityFrameWork.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFrameWork.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EntityFrameWork.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFrameWork.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EntityFrameWork.edmx</DependentUpon>
     </Compile>
     <Compile Include="FRMMedics.cs">
       <SubType>Form</SubType>
@@ -84,8 +108,23 @@
     <Compile Include="FRMHome.Designer.cs">
       <DependentUpon>FRMHome.cs</DependentUpon>
     </Compile>
+    <Compile Include="Medics.cs">
+      <DependentUpon>EntityFrameWork.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Patients.cs">
+      <DependentUpon>EntityFrameWork.tt</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Tools.cs" />
+    <Compile Include="Turns.cs">
+      <DependentUpon>EntityFrameWork.tt</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="FRMMedics.resx">
       <DependentUpon>FRMMedics.cs</DependentUpon>
     </EmbeddedResource>
@@ -98,6 +137,7 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="FRMHome.resx">
       <DependentUpon>FRMHome.cs</DependentUpon>
@@ -113,6 +153,13 @@
     </None>
     <None Include="DoctorOfficeDataSet.xss">
       <DependentUpon>DoctorOfficeDataSet.xsd</DependentUpon>
+    </None>
+    <EntityDeploy Include="EntityFrameWork.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>EntityFrameWork.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="EntityFrameWork.edmx.diagram">
+      <DependentUpon>EntityFrameWork.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -130,6 +177,23 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="EntityFrameWork.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>EntityFrameWork.Context.cs</LastGenOutput>
+      <DependentUpon>EntityFrameWork.edmx</DependentUpon>
+    </Content>
+    <Content Include="EntityFrameWork.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>EntityFrameWork.edmx</DependentUpon>
+      <LastGenOutput>EntityFrameWork.cs</LastGenOutput>
+    </Content>
+    <None Include="Resources\home.png" />
+    <None Include="Resources\logo2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

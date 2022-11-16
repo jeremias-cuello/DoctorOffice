@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using FontAwesome.Sharp;
@@ -14,6 +15,8 @@ namespace DoctorOffice
 {
     public partial class FRMHome : Form
     {
+        public static bool placeholder;
+
         private IconButton currentBtn;
         private Panel leftBorderBtn;
         private Form currentChildForm;
@@ -101,6 +104,8 @@ namespace DoctorOffice
             leftBorderBtn.Visible = false;
             IPBCurrentChild.IconChar = IconChar.Home;
             LBLCurrentChild.Text = "Home";
+
+            if (currentChildForm != null) currentChildForm.Close();
         }
 
         private void OpenChildForm(Form childForm)
@@ -145,6 +150,11 @@ namespace DoctorOffice
         private void IPBClose_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void IBTContact_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://mail.google.com/mail/u/0/?tf=cm&fs=1&source=mailto&to=cuellojeremiasnatanael@gmail.com&body=Hola%2c+te+contacto+desde+la+App+DoctorOffice.");
         }
     }
 }
