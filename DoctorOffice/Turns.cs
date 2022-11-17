@@ -27,5 +27,32 @@ namespace DoctorOffice
         public Nullable<int> MedicKey { get; set; }
         [DisplayName("ID Paciente")]
         public Nullable<int> PatientKey { get; set; }
+
+        public string GetContent()
+        {
+            using (DoctorOfficeEntities db = new DoctorOfficeEntities())
+            {
+                string content = "";
+                Medics m = new Medics();
+                Patients p = new Patients();
+
+                m = db.Medics.Find(this.MedicKey);
+                p = db.Patients.Find(this.PatientKey);
+                
+                content += String.Format(
+                    "Numero de Órden: " + this.Number + "\n" +
+                    "Órden para:" + "\n" +
+                    "  fecha: " + this.Date + "\n" +
+                    "  hora: " + this.Horary + "\n" +
+                    "Paciente:" + "\n" +
+                    "  Nombre: " + p.Name + "\n" +
+                    "  Apellido: " + p.Surname + "\n" +
+                    "Medico:" + "\n" +
+                    "  Nombre: " + m.Name + "\n" +
+                    "  Apellido: " + m.Surname);
+
+                return content;
+            }
+        }
     }
 }

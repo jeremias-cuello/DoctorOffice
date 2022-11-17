@@ -5,18 +5,18 @@
     <Setting Name="DoctorOfficeConnectionString" Type="(Connection string)" Scope="Application">
       <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
-  &lt;ConnectionString&gt;Data Source=DESKTOP-2J37NQO\SQLEXPRESS;Initial Catalog=DoctorOffice;Persist Security Info=True;User ID=sa;Password=jerekpo289&lt;/ConnectionString&gt;
+  &lt;ConnectionString&gt;Data Source=DESKTOP-3Q5F5DK\SQLEXPRESS;Initial Catalog=DoctorOffice;Persist Security Info=True;User ID=sa;Password=123456789&lt;/ConnectionString&gt;
   &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
-      <Value Profile="(Default)">Data Source=DESKTOP-2J37NQO\SQLEXPRESS;Initial Catalog=DoctorOffice;Persist Security Info=True;User ID=sa;Password=jerekpo289</Value>
+      <Value Profile="(Default)">Data Source=DESKTOP-3Q5F5DK\SQLEXPRESS;Initial Catalog=DoctorOffice;Persist Security Info=True;User ID=sa;Password=123456789</Value>
     </Setting>
     <Setting Name="SoccerFieldsConnectionString" Type="(Connection string)" Scope="Application">
       <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
-  &lt;ConnectionString&gt;Data Source=DESKTOP-2J37NQO\SQLEXPRESS;Initial Catalog=SoccerFields;Persist Security Info=True;User ID=sa;Password=jerekpo289&lt;/ConnectionString&gt;
+  &lt;ConnectionString&gt;Data Source=DESKTOP-3Q5F5DK\SQLEXPRESS;Initial Catalog=SoccerFields;Persist Security Info=True;User ID=sa;Password=123456789&lt;/ConnectionString&gt;
   &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
-      <Value Profile="(Default)">Data Source=DESKTOP-2J37NQO\SQLEXPRESS;Initial Catalog=SoccerFields;Persist Security Info=True;User ID=sa;Password=jerekpo289</Value>
+      <Value Profile="(Default)">Data Source=DESKTOP-3Q5F5DK\SQLEXPRESS;Initial Catalog=SoccerFields;Persist Security Info=True;User ID=sa;Password=123456789</Value>
     </Setting>
   </Settings>
 </SettingsFile>
