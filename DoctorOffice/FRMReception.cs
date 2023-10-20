@@ -72,12 +72,15 @@ namespace DoctorOffice
         {
             using (DoctorOfficeEntities db = new DoctorOfficeEntities())
             {
-                Patients p = new Patients();
-                p.Name = TXTName.Text;
-                p.Surname = TXTSurname.Text;
-                p.Dni = Convert.ToInt32(TXTDni.Text.Replace(".", ""));
-                p.Email = TXTEmail.Text;
-                p.Phone = Convert.ToInt32(TXTPhone.Text.Replace("-", ""));
+                Patients p = new Patients {
+                    Name = TXTName.Text,
+                    Surname = TXTSurname.Text,
+                    Dni = Convert.ToInt32(TXTDni.Text.Replace(".", "")),
+                    Email = TXTEmail.Text,
+                    Phone = Convert.ToInt32(TXTPhone.Text.Replace("-", ""))
+                };
+
+                MessageBox.Show(p.ToString());
 
                 db.Patients.Add(p);
                 db.SaveChanges();
@@ -99,8 +102,7 @@ namespace DoctorOffice
         {
             if (DGVPatients.Selected())
             {
-                DataGridViewRow row = DGVPatients.SelectedRows[0];
-                Patients p = (Patients)row.DataBoundItem;
+                Patients p = DGVPatients.SelectedRows[0].DataBoundItem as Patients;
 
                 using (DoctorOfficeEntities db = new DoctorOfficeEntities())
                 {

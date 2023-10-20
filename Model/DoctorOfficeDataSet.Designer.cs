@@ -10,7 +10,7 @@
 
 #pragma warning disable 1591
 
-namespace DoctorOffice {
+namespace Model {
     
     
     /// <summary>
@@ -30,9 +30,9 @@ namespace DoctorOffice {
         
         private TurnsDataTable tableTurns;
         
-        private global::System.Data.DataRelation relationrl_Turns_Medics;
-        
         private global::System.Data.DataRelation relationrl_Turns_Patients;
+        
+        private global::System.Data.DataRelation relationrl_Turns_Medics;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -246,8 +246,8 @@ namespace DoctorOffice {
                     this.tableTurns.InitVars();
                 }
             }
-            this.relationrl_Turns_Medics = this.Relations["rl_Turns_Medics"];
             this.relationrl_Turns_Patients = this.Relations["rl_Turns_Patients"];
+            this.relationrl_Turns_Medics = this.Relations["rl_Turns_Medics"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -265,13 +265,6 @@ namespace DoctorOffice {
             this.tableTurns = new TurnsDataTable();
             base.Tables.Add(this.tableTurns);
             global::System.Data.ForeignKeyConstraint fkc;
-            fkc = new global::System.Data.ForeignKeyConstraint("rl_Turns_Medics", new global::System.Data.DataColumn[] {
-                        this.tableMedics.MedicKeyColumn}, new global::System.Data.DataColumn[] {
-                        this.tableTurns.MedicKeyColumn});
-            this.tableTurns.Constraints.Add(fkc);
-            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
-            fkc.DeleteRule = global::System.Data.Rule.Cascade;
-            fkc.UpdateRule = global::System.Data.Rule.Cascade;
             fkc = new global::System.Data.ForeignKeyConstraint("rl_Turns_Patients", new global::System.Data.DataColumn[] {
                         this.tablePatients.PatientKeyColumn}, new global::System.Data.DataColumn[] {
                         this.tableTurns.PatientKeyColumn});
@@ -279,14 +272,21 @@ namespace DoctorOffice {
             fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
             fkc.DeleteRule = global::System.Data.Rule.Cascade;
             fkc.UpdateRule = global::System.Data.Rule.Cascade;
-            this.relationrl_Turns_Medics = new global::System.Data.DataRelation("rl_Turns_Medics", new global::System.Data.DataColumn[] {
+            fkc = new global::System.Data.ForeignKeyConstraint("rl_Turns_Medics", new global::System.Data.DataColumn[] {
                         this.tableMedics.MedicKeyColumn}, new global::System.Data.DataColumn[] {
-                        this.tableTurns.MedicKeyColumn}, false);
-            this.Relations.Add(this.relationrl_Turns_Medics);
+                        this.tableTurns.MedicKeyColumn});
+            this.tableTurns.Constraints.Add(fkc);
+            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
+            fkc.DeleteRule = global::System.Data.Rule.Cascade;
+            fkc.UpdateRule = global::System.Data.Rule.Cascade;
             this.relationrl_Turns_Patients = new global::System.Data.DataRelation("rl_Turns_Patients", new global::System.Data.DataColumn[] {
                         this.tablePatients.PatientKeyColumn}, new global::System.Data.DataColumn[] {
                         this.tableTurns.PatientKeyColumn}, false);
             this.Relations.Add(this.relationrl_Turns_Patients);
+            this.relationrl_Turns_Medics = new global::System.Data.DataRelation("rl_Turns_Medics", new global::System.Data.DataColumn[] {
+                        this.tableMedics.MedicKeyColumn}, new global::System.Data.DataColumn[] {
+                        this.tableTurns.MedicKeyColumn}, false);
+            this.Relations.Add(this.relationrl_Turns_Medics);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1764,23 +1764,23 @@ namespace DoctorOffice {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public MedicsRow MedicsRow {
-                get {
-                    return ((MedicsRow)(this.GetParentRow(this.Table.ParentRelations["rl_Turns_Medics"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["rl_Turns_Medics"]);
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public PatientsRow PatientsRow {
                 get {
                     return ((PatientsRow)(this.GetParentRow(this.Table.ParentRelations["rl_Turns_Patients"])));
                 }
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["rl_Turns_Patients"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public MedicsRow MedicsRow {
+                get {
+                    return ((MedicsRow)(this.GetParentRow(this.Table.ParentRelations["rl_Turns_Medics"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["rl_Turns_Medics"]);
                 }
             }
             
@@ -1912,7 +1912,7 @@ namespace DoctorOffice {
         }
     }
 }
-namespace DoctorOffice.DoctorOfficeDataSetTableAdapters {
+namespace Model.DoctorOfficeDataSetTableAdapters {
     
     
     /// <summary>
@@ -2084,7 +2084,7 @@ SELECT MedicKey, Name, Surname, NumberTuition FROM Medics WHERE (MedicKey = @Med
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::DoctorOffice.Properties.Settings.Default.DoctorOfficeConnectionString;
+            this._connection.ConnectionString = global::Model.Properties.Settings.Default.DoctorOfficeConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2487,7 +2487,7 @@ SELECT PatientKey, Name, Surname, Dni, Phone, Email FROM Patients WHERE (Patient
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::DoctorOffice.Properties.Settings.Default.DoctorOfficeConnectionString;
+            this._connection.ConnectionString = global::Model.Properties.Settings.Default.DoctorOfficeConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2948,7 +2948,7 @@ SELECT TurnKey, Number, Date, Horary, MedicKey, PatientKey FROM Turns WHERE (Tur
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::DoctorOffice.Properties.Settings.Default.DoctorOfficeConnectionString;
+            this._connection.ConnectionString = global::Model.Properties.Settings.Default.DoctorOfficeConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

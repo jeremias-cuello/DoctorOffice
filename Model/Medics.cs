@@ -18,5 +18,10 @@ namespace DoctorOffice
         public string Name { get; set; }
         public string Surname { get; set; }
         public Nullable<int> NumberTuition { get; set; }
+
+        public override string ToString()
+        {
+            return $"{Name}, {Surname}";
+        }
     }
 }

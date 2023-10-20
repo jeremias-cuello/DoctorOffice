@@ -1,4 +1,4 @@
-﻿namespace DoctorOffice
+﻿namespace Model
 {
 
 

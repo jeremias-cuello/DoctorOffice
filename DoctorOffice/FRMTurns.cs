@@ -28,74 +28,37 @@ namespace DoctorOffice
         {
             if (DGVPatients.Selected())
             {
-                DataGridViewRow row;
-                row = DGVPatients.SelectedRows[0];
-                Patients p = (Patients)row.DataBoundItem;
-                Turns t = new Turns();
-                Medics m = new Medics();
-                m.MedicKey = ((Medics)CMBMedics.SelectedItem).MedicKey;
+                Patients p = DGVPatients.SelectedRows[0].DataBoundItem as Patients;
+                Medics m = CMBMedics.SelectedItem as Medics;
+                Turns t = new Turns {
+                    Number = new Random().Next(10000, 99999),
+                    DateTime = DTPDate.Value,
+                    MedicKey = m.MedicKey,
+                    PatientKey = p.PatientKey
+                };
 
                 using (DoctorOfficeEntities db = new DoctorOfficeEntities())
                 {
-                    MessageBox.Show(TimeSpan.FromHours(DateTime.Now.Hour).ToString());
-                    MessageBox.Show(DateTime.Now.Hour.ToString());
-
-                    Random rnd = new Random();
-                    t.Number = rnd.Next(10000, 99999);
-                    t.PatientKey = p.PatientKey;
-                    t.MedicKey = m.MedicKey;
-                    TimeSpan horary = TimeSpan.FromHours(Convert.ToDouble(TXTTime.Text));
-                    t.Horary = horary;
-                    t.Date = DateTime.Now;
                     try
                     {
                         db.Turns.Add(t);
                         db.SaveChanges();
+                        DGVTurns.DataSource = db.Turns.ToList();
                     }
                     catch
                     {
-                        MessageBox.Show("Hora ya ocupada con " + db.Medics.Find(m.MedicKey).Name);
+                        MessageBox.Show("Ocurrio un Error al agregar un turno.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-
-                    DGVTurns.DataSource = db.Turns.ToList();
                 }
             }
         }
-
-        #region TextBoxesHandlersOnEnter
-
-        private void TXBNNumber_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void TXTTime_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        #endregion
-
-        #region TextBoxesHandlersOnLeave
-
-        private void TXBNNumber_Leave(object sender, EventArgs e)
-        {
-
-        }
-        private void TXTTime_Leave(object sender, EventArgs e)
-        {
-
-        }
-
-        #endregion
 
         private void DGVTurns_SelectionChanged(object sender, EventArgs e)
         {
             if (DGVTurns.SelectedRows.Count > 0)
             {
-                TXBNNumber.Text = DGVTurns.SelectedRows[0].Cells[1].Value.ToString();
-                TXTDate.Text = DGVTurns.SelectedRows[0].Cells[2].Value.ToString();
-                TXTTime.Text = DGVTurns.SelectedRows[0].Cells[3].Value.ToString();
+                TXBNumber.Text = DGVTurns.SelectedRows[0].Cells[1].Value.ToString();
+                DTPDate.Text = DGVTurns.SelectedRows[0].Cells[2].Value.ToString();
                 int medicKey = (int)DGVTurns.SelectedRows[0].Cells[4].Value;
                 using (DoctorOfficeEntities db = new DoctorOfficeEntities())
                 {
@@ -106,10 +69,39 @@ namespace DoctorOffice
 
         private void DGVTurns_RowLeave(object sender, DataGridViewCellEventArgs e)
         {
-            TXBNNumber.Text = "Número";
-            TXTDate.Text = "Fecha";
-            TXTTime.Text = "Horario";
+            TXBNumber.Text = "Número";
             CMBMedics.SelectedIndex = 0;
+        }
+
+        private void IBTDown_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void IBTModify_Click(object sender, EventArgs e)
+        {
+            if (DGVTurns.Selected())
+            {
+                Turns t = DGVTurns.SelectedRows[0].DataBoundItem as Turns;
+                
+                using (DoctorOfficeEntities db = new DoctorOfficeEntities())
+                {
+                    try
+                    {
+                        t = db.Turns.Find(t.TurnKey);
+                        t.DateTime = DTPDate.Value;
+                        t.MedicKey = (CMBMedics.SelectedItem as Medics).MedicKey;
+
+                        db.Entry(t).State = System.Data.Entity.EntityState.Modified;
+                        db.SaveChanges();
+                        DGVTurns.DataSource = db.Turns.ToList();
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Ocurrio un error al modificar un turno.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
         }
     }
 }

@@ -128,7 +128,9 @@ namespace DoctorOffice
             bool selected = (dgv.SelectedRows.Count > 0);
 
             if(!selected)
+            {
                 MessageBox.Show("Debe Seleccionar una fila.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
             return selected;
         }
