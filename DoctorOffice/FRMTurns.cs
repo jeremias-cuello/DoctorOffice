@@ -1,14 +1,20 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
 using System.Windows.Forms;
-using System.Text.RegularExpressions;
 using System.Linq;
+using System.Text.RegularExpressions;
+using System.Collections.Generic;
+using System.Drawing.Printing;
+using System.Drawing;
+using System.IO;
+using System.Diagnostics;
 
 namespace DoctorOffice
 {
     public partial class FRMTurns : Form
     {
+        private Font printFont = new Font("Arial", 14, FontStyle.Regular, GraphicsUnit.Point);
+        Turns t_print = new Turns();
+
         public FRMTurns()
         {
             InitializeComponent();
@@ -113,6 +119,29 @@ namespace DoctorOffice
                         MessageBox.Show("Ocurrio un error al modificar un turno.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
+            }
+        }
+
+        private void Print(object sender, PrintPageEventArgs e)
+        {
+            string content = t_print.GetContent();
+            MessageBox.Show(content);
+            //Image img = Image.FromFile("C:\\Users\\Administrador\\D\\_PDISC\\ProyectoFinal\\DoctorOfficeSolucion\\DoctorOffice\\Resources\\home.png");
+            //e.Graphics.DrawImage(img, new Rectangle(e.MarginBounds.Width / 2, 50, 250, 230));
+            e.Graphics.DrawString(content, printFont, Brushes.Black, new RectangleF(10, 10, 400, 400));
+        }
+
+        private void IBTPrint_Click(object sender, EventArgs e)
+        {
+            if (DGVTurns.Selected())
+            {
+                t_print = (Turns)DGVTurns.SelectedRows[0].DataBoundItem;
+
+                printDocument1 = new PrintDocument();
+                PrinterSettings ps = new PrinterSettings();
+                printDocument1.PrinterSettings = ps;
+                printDocument1.PrintPage += Print;
+                printDocument1.Print();
             }
         }
     }

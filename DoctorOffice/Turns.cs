@@ -11,13 +11,44 @@ namespace DoctorOffice
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+
     public partial class Turns
     {
         public int TurnKey { get; set; }
+        [DisplayName("Número")]
         public int Number { get; set; }
+        [DisplayName("Fecha")]
         public Nullable<System.DateTime> DateTime { get; set; }
+        [DisplayName("ID Médico")]
         public int MedicKey { get; set; }
+        [DisplayName("ID Paciente")]
         public int PatientKey { get; set; }
+
+        public string GetContent()
+        {
+            using (DoctorOfficeEntities db = new DoctorOfficeEntities())
+            {
+                string content = "";
+                Medics m = new Medics();
+                Patients p = new Patients();
+
+                m = db.Medics.Find(this.MedicKey);
+                p = db.Patients.Find(this.PatientKey);
+                
+                content += String.Format(
+                    "Numero de Órden: " + this.Number + "\n" +
+                    "Órden para:" + "\n" +
+                    "  fecha: " + this.DateTime + "\n" +
+                    "Paciente:" + "\n" +
+                    "  Nombre: " + p.Name + "\n" +
+                    "  Apellido: " + p.Surname + "\n" +
+                    "Medico:" + "\n" +
+                    "  Nombre: " + m.Name + "\n" +
+                    "  Apellido: " + m.Surname);
+
+                return content;
+            }
+        }
     }
 }

@@ -40,6 +40,8 @@ namespace DoctorOffice
             this.DGVPatients = new System.Windows.Forms.DataGridView();
             this.IBTReserve = new FontAwesome.Sharp.IconButton();
             this.LBLTurns = new System.Windows.Forms.Label();
+            this.IBTPrint = new FontAwesome.Sharp.IconButton();
+            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.GPBTurn.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGVTurns)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DGVPatients)).BeginInit();
@@ -193,6 +195,24 @@ namespace DoctorOffice
             this.LBLTurns.TabIndex = 33;
             this.LBLTurns.Text = "Turnos";
             // 
+            // IBTPrint
+            // 
+            this.IBTPrint.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(101)))), ((int)(((byte)(201)))));
+            this.IBTPrint.FlatAppearance.BorderSize = 0;
+            this.IBTPrint.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(73)))), ((int)(((byte)(173)))));
+            this.IBTPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.IBTPrint.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.IBTPrint.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.IBTPrint.IconColor = System.Drawing.Color.Black;
+            this.IBTPrint.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.IBTPrint.Location = new System.Drawing.Point(225, 457);
+            this.IBTPrint.Name = "IBTPrint";
+            this.IBTPrint.Size = new System.Drawing.Size(151, 34);
+            this.IBTPrint.TabIndex = 32;
+            this.IBTPrint.Text = "Imprimir";
+            this.IBTPrint.UseVisualStyleBackColor = false;
+            this.IBTPrint.Click += new System.EventHandler(this.IBTPrint_Click);
+            // 
             // FRMTurns
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -200,6 +220,7 @@ namespace DoctorOffice
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(132)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(558, 484);
             this.ControlBox = false;
+            this.Controls.Add(this.IBTPrint);
             this.Controls.Add(this.LBLTurns);
             this.Controls.Add(this.IBTReserve);
             this.Controls.Add(this.DGVPatients);
@@ -234,5 +255,7 @@ namespace DoctorOffice
         private FontAwesome.Sharp.IconButton IBTReserve;
         private System.Windows.Forms.DateTimePicker DTPDate;
         private System.Windows.Forms.Label LBLTurns;
+        private FontAwesome.Sharp.IconButton IBTPrint;
+        private System.Drawing.Printing.PrintDocument printDocument1;
     }
 }
