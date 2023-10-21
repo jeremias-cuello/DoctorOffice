@@ -75,7 +75,19 @@ namespace DoctorOffice
 
         private void IBTDown_Click(object sender, EventArgs e)
         {
-            
+            if (DGVTurns.Selected())
+            {
+                Turns t = DGVTurns.SelectedRows[0].DataBoundItem as Turns;
+
+                using (DoctorOfficeEntities db = new DoctorOfficeEntities())
+                {
+                    t = db.Turns.Find(t.TurnKey);
+                    db.Turns.Remove(t);
+                    db.SaveChanges();
+
+                    DGVTurns.DataSource = db.Turns.ToList();
+                }
+            }
         }
 
         private void IBTModify_Click(object sender, EventArgs e)
