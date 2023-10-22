@@ -105,7 +105,10 @@ namespace DoctorOffice
             IPBCurrentChild.IconChar = IconChar.Home;
             LBLCurrentChild.Text = "Home";
 
-            if (currentChildForm != null) currentChildForm.Close();
+            if (currentChildForm != null)
+            {
+                currentChildForm.Close();
+            }
         }
 
         private void OpenChildForm(Form childForm)
@@ -126,10 +129,10 @@ namespace DoctorOffice
         }
 
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
-        private extern static void ReleaseCapture();
+        private static extern void ReleaseCapture();
 
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
-        private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
+        private static extern void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
 
         private void PNLNav_MouseDown(object sender, MouseEventArgs e)
         {
@@ -139,7 +142,7 @@ namespace DoctorOffice
 
         private void IPBClose_MouseLeave(object sender, EventArgs e)
         {
-            IPBClose.BackColor = Color.FromArgb(40, 90, 183);
+            IPBClose.BackColor = Color.FromArgb(57, 101, 201);
         }
 
         private void IPBClose_MouseEnter(object sender, EventArgs e)

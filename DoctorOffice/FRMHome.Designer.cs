@@ -260,7 +260,7 @@ namespace DoctorOffice
             // IPBClose
             // 
             this.IPBClose.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.IPBClose.BackColor = System.Drawing.Color.RoyalBlue;
+            this.IPBClose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(101)))), ((int)(((byte)(201)))));
             this.IPBClose.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.IPBClose.IconChar = FontAwesome.Sharp.IconChar.Multiply;
             this.IPBClose.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));

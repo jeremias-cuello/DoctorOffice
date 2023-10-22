@@ -7,14 +7,12 @@ using System.Drawing.Printing;
 using System.Drawing;
 using System.IO;
 using System.Diagnostics;
+using System.Reflection;
 
 namespace DoctorOffice
 {
     public partial class FRMTurns : Form
     {
-        private Font printFont = new Font("Arial", 14, FontStyle.Regular, GraphicsUnit.Point);
-        Turns t_print = new Turns();
-
         public FRMTurns()
         {
             InitializeComponent();
@@ -124,25 +122,68 @@ namespace DoctorOffice
 
         private void Print(object sender, PrintPageEventArgs e)
         {
-            string content = t_print.GetContent();
-            MessageBox.Show(content);
-            //Image img = Image.FromFile("C:\\Users\\Administrador\\D\\_PDISC\\ProyectoFinal\\DoctorOfficeSolucion\\DoctorOffice\\Resources\\home.png");
-            //e.Graphics.DrawImage(img, new Rectangle(e.MarginBounds.Width / 2, 50, 250, 230));
-            e.Graphics.DrawString(content, printFont, Brushes.Black, new RectangleF(10, 10, 400, 400));
+            Font fontBody = new Font("Arial", 14, FontStyle.Regular, GraphicsUnit.Point);
+            Font fontTitle = new Font("Calibri", 24, FontStyle.Regular, GraphicsUnit.Point);
+            Pen linePen = new Pen(Brushes.Black, 2);
+            string imagePath = Path.Combine(Application.StartupPath, "..\\..\\Resources", "home.png");
+            const int margenHor = 50;
+
+            // encabezado
+            const int x = 400;
+            const int y = 140;
+            Image img = Image.FromFile(imagePath);
+            e.Graphics.DrawLine(linePen, margenHor, 60, e.MarginBounds.Right - 10, 60);
+            e.Graphics.DrawImage(img, new Rectangle(margenHor, 65, 230, 230));
+            e.Graphics.DrawString("DoctorOffice", fontTitle, Brushes.Black, new RectangleF(x, y, e.MarginBounds.Width - margenHor, 40));
+            e.Graphics.DrawLine(linePen, 230+80, 185, e.MarginBounds.Right - margenHor, 185); // medio del titulo
+            e.Graphics.DrawString("Turno Médico", fontTitle, Brushes.Black, new RectangleF(x-7, y+50, e.MarginBounds.Width - margenHor, 40));
+            // lineas separadores
+            int heigth = 310;
+            e.Graphics.DrawLine(linePen, margenHor, heigth, e.MarginBounds.Right - 10, heigth); // inferior encabezado
+            
+            linePen = new Pen(Brushes.Black, 1);
+            heigth += 90; // 3 reglones
+            e.Graphics.DrawLine(linePen, margenHor, heigth, e.MarginBounds.Right - 10, heigth);
+            heigth += 90;
+            e.Graphics.DrawLine(linePen, margenHor, heigth, e.MarginBounds.Right - 10, heigth);
+            heigth += 90;
+            e.Graphics.DrawLine(linePen, margenHor, heigth, e.MarginBounds.Right - 10, heigth);
+
+            string content = turnToPrint.GetPrintContent();
+            e.Graphics.DrawString(content, fontBody, Brushes.Black, new RectangleF(margenHor, 320, e.MarginBounds.Width - margenHor, 520));
         }
 
         private void IBTPrint_Click(object sender, EventArgs e)
         {
             if (DGVTurns.Selected())
             {
-                t_print = (Turns)DGVTurns.SelectedRows[0].DataBoundItem;
-
-                printDocument1 = new PrintDocument();
-                PrinterSettings ps = new PrinterSettings();
-                printDocument1.PrinterSettings = ps;
-                printDocument1.PrintPage += Print;
-                printDocument1.Print();
+                turnToPrint = DGVTurns.SelectedRows[0].DataBoundItem as Turns;
+                PrinterSettings ps = new PrinterSettings {
+                    PrintFileName = "turno-medico-DoctorOffice"
+                };
+                if (!ps.IsDefaultPrinter)
+                {
+                    MessageBox.Show("No esta establecido una impresora predeterminada", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                if (!ps.IsValid)
+                {
+                    MessageBox.Show("La impresora " + ps.PrinterName + "establecida no es válida.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                try
+                {
+                    PDTurn = new PrintDocument {
+                        PrinterSettings = ps
+                    };
+                    PDTurn.PrintPage += Print;
+                    PDTurn.Print();
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show("Ocurrio un error al imprimir el documento: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
+
+        private Turns turnToPrint = new Turns();
     }
 }

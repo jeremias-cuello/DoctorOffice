@@ -25,30 +25,31 @@ namespace DoctorOffice
         [DisplayName("ID Paciente")]
         public int PatientKey { get; set; }
 
-        public string GetContent()
+        public string GetPrintContent()
         {
+            Medics m = new Medics();
+            Patients p = new Patients();
+
             using (DoctorOfficeEntities db = new DoctorOfficeEntities())
             {
-                string content = "";
-                Medics m = new Medics();
-                Patients p = new Patients();
-
                 m = db.Medics.Find(this.MedicKey);
-                p = db.Patients.Find(this.PatientKey);
-                
-                content += String.Format(
-                    "Numero de Órden: " + this.Number + "\n" +
-                    "Órden para:" + "\n" +
-                    "  fecha: " + this.DateTime + "\n" +
-                    "Paciente:" + "\n" +
-                    "  Nombre: " + p.Name + "\n" +
-                    "  Apellido: " + p.Surname + "\n" +
-                    "Medico:" + "\n" +
-                    "  Nombre: " + m.Name + "\n" +
-                    "  Apellido: " + m.Surname);
-
-                return content;
+                p = db.Patients.Find(this.PatientKey);    
             }
+            
+            string content = 
+                "Paciente" + "\n" +
+                "    Nombre: " + p.Name + "\n" +
+                "    Apellido: " + p.Surname + "\n" +
+                "\n" +
+                "Turno" + "\n" +
+                "    Número de orden: " + this.Number + "\n" +
+                "    Fecha: " + this.DateTime + "\n" +
+                "\n" +
+                "Médico" + "\n" +
+                "    Nombre: " + m.Name + "\n" +
+                "    Apellido: " + m.Surname;
+
+            return content;
         }
     }
 }

@@ -43,27 +43,42 @@ namespace DoctorOffice
         private void TXTName_Leave(object sender, EventArgs e)
         {
             placeholder = ToolsUI.TextBoxLeave(sender, ToolsUI.ControlsTXT.NameControl.Name);
-            if (!placeholder) ToolsUI.TextBoxValidate(ToolsUI.ControlsTXT.NameControl.regExpression);
+            if (!placeholder)
+            {
+                ToolsUI.TextBoxValidate(ToolsUI.ControlsTXT.NameControl.regExpression);
+            }
         }
         private void TXTSurname_Leave(object sender, EventArgs e)
         {
             placeholder = ToolsUI.TextBoxLeave(sender, ToolsUI.ControlsTXT.SurnameControl.Name);
-            if (!placeholder) ToolsUI.TextBoxValidate(ToolsUI.ControlsTXT.SurnameControl.regExpression);
+            if (!placeholder)
+            {
+                ToolsUI.TextBoxValidate(ToolsUI.ControlsTXT.SurnameControl.regExpression);
+            }
         }
         private void TXTDni_Leave(object sender, EventArgs e)
         {
             placeholder = ToolsUI.TextBoxLeave(sender, ToolsUI.ControlsTXT.DNIControl.Name);
-            if (!placeholder) ToolsUI.TextBoxValidate(ToolsUI.ControlsTXT.DNIControl.regExpression);
+            if (!placeholder)
+            {
+                ToolsUI.TextBoxValidate(ToolsUI.ControlsTXT.DNIControl.regExpression);
+            }
         }
         private void TXTPhone_Leave(object sender, EventArgs e)
         {
             placeholder = ToolsUI.TextBoxLeave(sender, ToolsUI.ControlsTXT.PhoneControl.Name);
-            if (!placeholder) ToolsUI.TextBoxValidate(ToolsUI.ControlsTXT.PhoneControl.regExpression);
+            if (!placeholder)
+            {
+                ToolsUI.TextBoxValidate(ToolsUI.ControlsTXT.PhoneControl.regExpression);
+            }
         }
         private void TXTEmail_Leave(object sender, EventArgs e)
         {
             placeholder = ToolsUI.TextBoxLeave(sender, ToolsUI.ControlsTXT.EmailControl.Name);
-            if (!placeholder) ToolsUI.TextBoxValidate(ToolsUI.ControlsTXT.EmailControl.regExpression);
+            if (!placeholder)
+            {
+                ToolsUI.TextBoxValidate(ToolsUI.ControlsTXT.EmailControl.regExpression);
+            }
         }
 
         #endregion
